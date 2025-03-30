@@ -7,6 +7,32 @@ Medard guillaume
 
 Bienvenue dans le projet **Canard Fighter Simulator** ! Ce projet est un simulateur de combat mettant en scène des "Canards Légendaires" disposant de types, forces, faiblesses, attaques et capacités spéciales. Il sert de base pour appliquer et approfondir les connaissances en conception orientée objet, en particulier l'héritage, le polymorphisme et la liaison dynamique en Java.
 
+## Questions partie 4
+
+# Canard Fighter Simulator - README
+## Questions de modélisation
+
+### 1. **Quelles classes pourraient être abstraites ?**
+La classe **`Canard`** pourrait être abstraite. Elle définit des comportements communs à tous les canards, mais certains aspects, comme les capacités spéciales, sont différents d'un type de canard à un autre. La méthode `activerCapaciteSpeciale()` est donc abstraite.
+
+### 2. **Quels comportements communs pourraient être définis dans une interface ?**
+Une interface pourrait être utilisée pour définir des comportements comme **`CapaciteSpeciale`**, permettant à chaque type de canard de définir sa propre capacité spéciale. Cela permet une modularité et une extensibilité du code.
+
+### 3. **Comment représenter un changement de statut (par exemple, brûlé ou paralysé) dans la modélisation ?**
+Un changement de statut est représenté par un attribut `Statut` dans la classe `Canard`. L'effet du statut modifie le comportement d'un canard, par exemple, un canard "Gelé" ne peut pas attaquer pendant un tour.
+
+```java
+public enum Statut {
+    NORMAL, BRULE, GUELE, PARALYSE
+}
+```
+
+### 4. **Quels seraient les avantages d’utiliser une classe ou une interface supplémentaire pour gérer les capacités spéciales ?**
+Utiliser une interface ou une classe dédiée pour gérer les capacités spéciales permet de rendre le code plus modulaire et extensible. Chaque capacité spéciale serait gérée indépendamment des autres aspects du jeu, ce qui simplifie les modifications futures. Par exemple, si un nouveau type de canard est ajouté, sa capacité spéciale peut être gérée facilement via l'interface `CapaciteSpeciale`.
+
+### 5. **Quels défis sont associés à l’extensibilité de votre modèle pour ajouter de nouveaux types de canards ou de nouvelles capacités ?**
+L'extension du modèle peut être compliquée si les classes sont trop rigides. Pour ajouter un nouveau type de canard, il faut modifier l'énumération `TypeCanard`, ainsi que la classe `Canard` et ses classes filles. Pour ajouter une nouvelle capacité, il faut aussi créer de nouvelles classes ou interfaces. Un design plus flexible pourrait utiliser des **design patterns** comme le **Factory Pattern** ou le **Strategy Pattern** pour faciliter l'ajout de nouveaux types ou capacités.
+
 ## Table des Matières
 
 1. [Description du Projet](#description-du-projet)
